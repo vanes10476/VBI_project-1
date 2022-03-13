@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	if(! event.target.classList.contains('popup')) {
 	    if(document.querySelector('.popup--active')) {
 		let tmp = document.querySelector('.popup--active');
-		console.log(event.target.parentElement === tmp);
 		if(event.target.classList.contains('list__item')) {
 		    if(event.target.parentElement === tmp) {
 			tmp.classList.remove('popup--active');
