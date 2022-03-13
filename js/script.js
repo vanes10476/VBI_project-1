@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let li = document.createElement('li');
         let div = document.createElement('div');
         let popup = document.createElement('div');
+	let closeBtn = document.createElement('button');
+	closeBtn.classList.add('close-btn');
+	closeBtn.innerHTML = 'x';
         div.classList.add('list__item');
         popup.classList.add('popup');
         popup.innerHTML = 'Блок&nbsp';
@@ -24,15 +27,31 @@ document.addEventListener('DOMContentLoaded', function () {
         li.append(div);
         li.append(popup);
         list.append(li);
+	popup.append(closeBtn);
     }
 
     checkbox.addEventListener('click', onClickCheckbox);
     btn.addEventListener('click', createItem);
 
     window.addEventListener('click', function(event) {
-        console.log(event.target);
-        if(event.target.classList.contains('list__item')) {
-            event.target.parentElement.classList.toggle('popup--active');
-        }
+	if(! event.target.classList.contains('popup')) {
+	    if(document.querySelector('.popup--active')) {
+		let tmp = document.querySelector('.popup--active');
+		console.log(event.target.parentElement === tmp);
+		if(event.target.classList.contains('list__item')) {
+		    if(event.target.parentElement === tmp) {
+			tmp.classList.remove('popup--active');
+		    } else {
+		        tmp.classList.remove('popup--active');
+		        event.target.parentElement.classList.add('popup--active');
+		    } 
+		} else {
+		    tmp.classList.remove('popup--active');
+		}
+	    } else if(event.target.classList.contains('list__item')) {
+	        event.target.parentElement.classList.add('popup--active');
+            }
+	}
+		
     })    
 });

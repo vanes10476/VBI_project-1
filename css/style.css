@@ -85,3 +85,13 @@ li.active:nth-child(4n + 4) .list__item::after{
 .btn {
   cursor: pointer;
 }
+
+.close-btn {
+  position: absolute;
+  background-color: red;
+  color: #FFF;
+  cursor: pointer;
+  top: 5px;
+  right: 5px;
+  border-radius: 10px;
+}
