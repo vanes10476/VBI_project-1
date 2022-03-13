@@ -1,0 +1,87 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  counter-reset: number;
+  margin: -10px -10px 10px;
+}
+
+.list__item-container {
+  position: relative;
+  width: 25%;
+  cursor: pointer;
+}
+
+.popup {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px;
+  width: 70%;
+  top: 10%;
+  left: 0;
+  border-radius: 20px;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #FFF;
+  transform: scale(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.list__item-container.popup--active .popup {
+  transform: scale(1);
+}
+
+.popup::after {
+  content: counter(number);
+}
+
+.list__item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  border: 1px solid #333;
+  background-color: #FFF;
+}
+
+.list__item::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.list__item::after {
+  counter-increment: number;
+  content: counter(number);
+  color: #000;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+.mr50 {
+  margin-right: 50px;
+}
+
+li.active:nth-child(4n + 4) .list__item{
+  background-color: #333;
+}
+li.active:nth-child(4n + 4) .list__item::after{
+  color: #FFF;
+}
+
+.btn {
+  cursor: pointer;
+}
