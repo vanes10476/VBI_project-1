@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createItem() {
-        let list = document.querySelector('.list');
-        let li = document.createElement('li');
-        let div = document.createElement('div');
-        let popup = document.createElement('div');
-	let closeBtn = document.createElement('button');
+        let list = document.querySelector('.list');   
+        let li = document.createElement('li');          
+        let div = document.createElement('div');        
+        let popup = document.createElement('div');      
+	let closeBtn = document.createElement('button');    
 	closeBtn.classList.add('close-btn');
 	closeBtn.innerHTML = 'x';
         div.classList.add('list__item');
@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
         li.append(div);
         li.append(popup);
         list.append(li);
+
+        let count = document.querySelectorAll('li').length;
+        let number = count + 1;
+        div.setAttribute("data", `value-${number}`);
 	popup.append(closeBtn);
     }
 
